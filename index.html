@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Minimal Calculator</h2>
+		<div id="calculator">
+			<!-- row 1 -->
+			<div class="display-container" id="display">
+				<div class="display-container__result">
+					<!-- <span id="currentNumDisplay"></span> -->
+					
+				</div>
+				<div class="divider"></div>
+				<div class="display-container__calculation">
+					<!-- <span id="currentCalcDiplay"></span> -->
+				</div>
+			</div>
+			<button class="btn-op" id="clearBtn">C</button>
+
+			<!-- row 2 -->
+			<button class="btn btn-main" id="sevenBtn">7</button>
+			<button class="btn btn-main" id="eightBtn">8</button>
+			<button class="btn btn-main" id="nineBtn">9</button>
+			<button class="btn btn-op btn-single-print" id="divideBtn">÷</button>
+
+			<!-- row 3 -->
+			<button class="btn btn-main" id="fourBtn">4</button>
+			<button class="btn btn-main" id="fiveBtn">5</button>
+			<button class="btn btn-main" id="sixBtn">6</button>
+			<button class="btn btn-op btn-single-print" id="multiplyBtn">×</button>
+
+			<!-- row 4 -->
+			<button class="btn btn-main" id="oneBtn">1</button>
+			<button class="btn btn-main" id="twoBtn">2</button>
+			<button class="btn btn-main" id="threeBtn">3</button>
+			<button class="btn btn-op btn-single-print" id="minusBtn">−</button>
+
+			<!-- row 5 -->
+			<button class="btn btn-single-print" id="decimalBtn">.</button>
+			<button class="btn btn-main" id="zeroBtn">0</button>
+			<button class="btn btn-op" id="equalsBtn">=</button>
+			<button class="btn btn-op btn-single-print" id="plusBtn">+</button>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>

@@ -2,7 +2,7 @@
 
 ## The why?
 
-This will be the first project I create for my portfolio as part of the bootcamp I'm doing over at _nology! 
+This will be the first project I create for my portfolio as part of the bootcamp I'm doing over at \_nology!
 
 I'm excited to begin tying together all the JavaScript knowledge I've picked up so far.
 
@@ -46,11 +46,11 @@ Here's the plan of attack - which will be reviewed by one of the awesome \_nolog
 5. Create another event listener just for the operators. This will detect whenever they are pressed.
 
 6. Create a function to use in that event listener which will push the calculation to another variable (converted from a string using parseInt()). The new variable will be passed as a parameter into the relevant operator function which will return the result and print it to the display using the same function created previously.
+
     - I'm thinking I will have two if statements: one for the main operators, and another for equals (which will print the result)
     - I'm having trouble thinking about the exact specifics of how I would print a result and continue the operation when selecting an operator after already parsing two numbers in. I anticipate dedicating some extra attention/playing around with this part of the code to get it right
         - I'll probably need to create another if statement for this scenario that instructs the JS to use the result of the calculation as the first value of the next equation somehow
 
-7. Create an event listener and function for the clear button. It will clear the innerHTML of the display div. My initial thought is that I won't need to worry about erasing anything else, as I will only be storing the calculation in a variable *after* an operator or equals has been pressed. However, I'll probably need an if statement for the situation when pressing another operator after already doing a calculation (instead of pressing equals).
-
+7. Create an event listener and function for the clear button. It will clear the innerHTML of the display div. My initial thought is that I won't need to worry about erasing anything else, as I will only be storing the calculation in a variable _after_ an operator or equals has been pressed. However, I'll probably need an if statement for the situation when pressing another operator after already doing a calculation (instead of pressing equals).
 
 That's all for now, I'm looking forward to sinking my teeth into this one over the next few days.

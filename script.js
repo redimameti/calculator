@@ -11,6 +11,12 @@ const resultCurrentCalc = document.querySelector(
 const calcText = document.getElementById("calcText");
 const header = document.getElementById("header");
 
+// header.innerText = "9 / 8"
+
+// if (header.innerText.match(/\d* [+-/*] \d*/)) {
+// 	console.log("test works")
+// }
+
 // Add Text Element Function
 const addText = (text, parentNode) => {
 	// create a text node
@@ -51,22 +57,22 @@ const magic = (equationStr) => {
 		return addNums(num1, num2);
 	}
 
-	if (equationStr.includes("−")) {
-		const numsArr = equationStr.split("−");
+	if (equationStr.includes("-")) {
+		const numsArr = equationStr.split("-");
 		const num1 = parseInt(numsArr[0]);
 		const num2 = parseInt(numsArr[1]);
 		return minusNums(num1, num2);
 	}
 
-	if (equationStr.includes("×")) {
-		const numsArr = equationStr.split("×");
+	if (equationStr.includes("*")) {
+		const numsArr = equationStr.split("*");
 		const num1 = parseInt(numsArr[0]);
 		const num2 = parseInt(numsArr[1]);
 		return multiplyNums(num1, num2);
 	}
 
-	if (equationStr.includes("÷")) {
-		const numsArr = equationStr.split("÷");
+	if (equationStr.includes("/")) {
+		const numsArr = equationStr.split("/");
 		const num1 = parseInt(numsArr[0]);
 		const num2 = parseInt(numsArr[1]);
 		return divideNums(num1, num2);
@@ -74,33 +80,29 @@ const magic = (equationStr) => {
 
 	if (
 		!equationStr.includes("+") ||
-		!equationStr.includes("−") ||
-		!equationStr.includes("÷") ||
-		!equationStr.includes("×")
+		!equationStr.includes("-") ||
+		!equationStr.includes("/") ||
+		!equationStr.includes("*")
 	) {
 		return equationStr;
 	}
 };
 
+// Number buttons
 numBtn.forEach((btn) => {
 	btn.addEventListener("click", () => {
+		if (resultText.innerText === "0") {
+			resultText.innerText = "";
+		}
 		if (resultText.innerText == "") {
 			addText("Ans = 0", calcText);
 		}
-		addText(btn.innerText, resultText);
-	});
-});
-
-// Operator buttons
-operatorBtn.forEach((btn) => {
-	btn.addEventListener("click", () => {
-		if (!resultText.innerHTML.includes(btn.innerHTML)) {
-			addText(" " + btn.innerText + " ", resultText);
-		}
-
-		// if (resultDisplay.innerHTML.includes(btn.innerHTML)) {
-		// 	addText(" " + btn.innerHTML + " ", resultText);
+		// if (calcText.innerText.match(/\d* [+-/*] \d*/)) {
+		// 	//If there is an equation in the calcText field, and a result in the resultText field, I want resultText to = "" (this will reset the calculation so that numbers pressed don't get appended to the end of the previous result)
+		// 	console.log("test works")
+		// 	resultText.innerText = "";
 		// }
+		addText(btn.innerText, resultText);
 	});
 });
 
@@ -114,20 +116,40 @@ clearBtn.addEventListener("click", () => {
 
 // Equals Button
 equalsBtn.addEventListener("click", () => {
-	// I want the equals button to work ONLY if there are numbers already on the screen, otherwise it should do nothing - currently it displays an = sign if pressed before any numbers
-	// if (!resultText.innerText.includes(/[\d+]/)) {
-	// 	continue;
-	// }
+	if (calcText.innerText === "") {
+		resultText.innerText = "0";
+		calcText.innerText = "";
+	} else {
+		calcText.innerText = `${resultText.innerText} =`; // I want this to display the equation I had typed into the calculator BEFORE pressing equals
+		resultText.innerText = `${magic(resultText.innerText)}`; //this is what we want to display in the result display
+	}
+});
 
-	calcText.innerText = `${resultText.innerText} =`; // I want this to display the equation I had typed into the calculator BEFORE pressing equals
+// Operator buttons
+operatorBtn.forEach((btn) => {
+	btn.addEventListener("click", () => {
+		// if (resultText.innerText === "0") {
+		// 	resultText.innerText = "";
+		// }
 
-	//this is what we want to display in the result display
-	resultText.innerText = `${magic(resultText.innerText)}`; //
-
-	// If statement for num / 0
-	// if (/\d\s*\/\s*[0]/.test(resultText.innerText)) {
-	// 	console.log("test works");
-	// 	calcText.innerText = `${resultText.innerText} =`;
-	// 	resultText.innerText = "0";
-	// }
+		if (
+			//if we have already entered an operator in the equation
+			resultText.innerText.includes("+") ||
+			resultText.innerText.includes("-") ||
+			resultText.innerText.includes("/") ||
+			resultText.innerText.includes("*")
+		) {
+			// this will return the same result as pressing equals
+			calcText.innerText = `${resultText.innerText} =`;
+			resultText.innerText = `${magic(resultText.innerText)}`;
+		}
+		if (
+			!resultText.innerText.includes("+") ||
+			!resultText.innerText.includes("-") ||
+			!resultText.innerText.includes("/") ||
+			!resultText.innerText.includes("*")
+		) {
+			addText(" " + btn.innerText + " ", resultText);
+		}
+	});
 });

@@ -16,8 +16,7 @@ body {
 
 h1 {
 	color: #062428;
-  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.358)
-  ;
+	text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.358);
 }
 
 #calculator {
@@ -41,7 +40,7 @@ h1 {
 	display: grid;
 	grid-template-rows: repeat(3, 1fr);
 	grid-template-areas: "b" "a" "a";
-  padding: 10px 0px;
+	padding: 10px 0px;
 
 	&__result {
 		padding: 0px 15px;
@@ -53,8 +52,8 @@ h1 {
 		span {
 			color: white;
 			font-size: 3em;
-      display: flex;
-      font-weight: 200;
+			display: flex;
+			font-weight: 200;
 			text-align: right;
 		}
 	}
@@ -78,28 +77,34 @@ h1 {
 	font-size: 1.25em;
 }
 
-.num-btn, #decimalBtn {
+.num-btn,
+#decimalBtn {
 	background-color: #0d4e57;
 }
-.num-btn:hover, #decimalBtn:hover {
-  background-color: #0d4e57d6;
-  transition: background-color 15ms linear;
+.num-btn:hover,
+#decimalBtn:hover {
+	background-color: #0d4e57d6;
+	transition: background-color 15ms linear;
 }
-.num-btn:active, #decimalBtn:active {
-  background-color: #0d4e5793;
-  transition: background-color 7.5ms linear;
+.num-btn:active,
+#decimalBtn:active {
+	background-color: #0d4e5793;
+	transition: background-color 7.5ms linear;
 }
 
-.btn-op {
+.btn-op,
+#clearBtn {
 	background-color: #19484f;
 }
-.btn-op:hover {
-  background-color: #19484fd6;
-  transition: background-color 15ms linear;
+.btn-op:hover,
+#clearBtn:hover {
+	background-color: #19484fd6;
+	transition: background-color 15ms linear;
 }
-.btn-op:active {
-  background-color: #19484f8c;
-  transition: background-color 7.5ms linear;
+.btn-op:active,
+#clearBtn:active {
+	background-color: #19484f8c;
+	transition: background-color 7.5ms linear;
 }
 
 #display {
@@ -108,7 +113,7 @@ h1 {
 }
 
 #clearBtn {
-  border: none;
+	border: none;
 	font-size: 1.25em;
 	grid-area: b;
 	color: #e16c69;
@@ -177,13 +182,12 @@ h1 {
 	background-color: #0d4e57;
 }
 #equalsBtn:hover {
-  background-color: #0d4e57d6;
-  transition: background-color 15ms linear;
+	background-color: #0d4e57d6;
+	transition: background-color 15ms linear;
 }
 #equalsBtn:active {
-  background-color: #0d4e5793;
-  transition: background-color 15ms linear;
-
+	background-color: #0d4e5793;
+	transition: background-color 15ms linear;
 }
 
 #plusBtn {

@@ -68,30 +68,36 @@ h1 {
   font-size: 1.25em;
 }
 
-.num-btn, #decimalBtn {
+.num-btn,
+#decimalBtn {
   background-color: #0d4e57;
 }
 
-.num-btn:hover, #decimalBtn:hover {
+.num-btn:hover,
+#decimalBtn:hover {
   background-color: #0d4e57d6;
   transition: background-color 15ms linear;
 }
 
-.num-btn:active, #decimalBtn:active {
+.num-btn:active,
+#decimalBtn:active {
   background-color: #0d4e5793;
   transition: background-color 7.5ms linear;
 }
 
-.btn-op {
+.btn-op,
+#clearBtn {
   background-color: #19484f;
 }
 
-.btn-op:hover {
+.btn-op:hover,
+#clearBtn:hover {
   background-color: #19484fd6;
   transition: background-color 15ms linear;
 }
 
-.btn-op:active {
+.btn-op:active,
+#clearBtn:active {
   background-color: #19484f8c;
   transition: background-color 7.5ms linear;
 }

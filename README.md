@@ -50,12 +50,7 @@ Here's the plan of attack - which will be reviewed by one of the awesome \_nolog
     - I'm having trouble thinking about the exact specifics of how I would print a result and continue the operation when selecting an operator after already parsing two numbers in. I anticipate dedicating some extra attention/playing around with this part of the code to get it right
         - I'll probably need to create another if statement for this scenario that instructs the JS to use the result of the calculation as the first value of the next equation somehow
 
-
-<<<<<<< HEAD
-7. Create an event listener and function for the clear button. It will clear the innerHTML of the display div. It won't need to worry about erasing anything else, as I will only be storing the calculation *after* an operator has been pressed.
-=======
 7. Create an event listener and function for the clear button. It will clear the innerHTML of the display div. My initial thought is that I won't need to worry about erasing anything else, as I will only be storing the calculation in a variable *after* an operator or equals has been pressed. However, I'll probably need an if statement for the situation when pressing another operator after already doing a calculation (instead of pressing equals).
 
 
 That's all for now, I'm looking forward to sinking my teeth into this one over the next few days.
->>>>>>> 73b2e801ea6ebf19a0a6cb7c8b82473db93a8bab

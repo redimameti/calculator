@@ -14,43 +14,41 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<h1>Minimal Calculator</h2>
+		<h1 id="header">Minimal Calculator</h2>
 		<div id="calculator">
 			<!-- row 1 -->
 			<div class="display-container" id="display">
 				<div class="display-container__result">
-					<!-- <span id="currentNumDisplay"></span> -->
-					
+					<span id="resultText"></span>
 				</div>
-				<div class="divider"></div>
 				<div class="display-container__calculation">
-					<!-- <span id="currentCalcDiplay"></span> -->
+					<span id="calcText"></span>
 				</div>
 			</div>
-			<button class="btn-op" id="clearBtn">C</button>
+			<button class="btn-op" id="clearBtn">AC</button>
 
 			<!-- row 2 -->
-			<button class="btn btn-main" id="sevenBtn">7</button>
-			<button class="btn btn-main" id="eightBtn">8</button>
-			<button class="btn btn-main" id="nineBtn">9</button>
+			<button class="btn num-btn" id="sevenBtn">7</button>
+			<button class="btn num-btn" id="eightBtn">8</button>
+			<button class="btn num-btn" id="nineBtn">9</button>
 			<button class="btn btn-op btn-single-print" id="divideBtn">÷</button>
 
 			<!-- row 3 -->
-			<button class="btn btn-main" id="fourBtn">4</button>
-			<button class="btn btn-main" id="fiveBtn">5</button>
-			<button class="btn btn-main" id="sixBtn">6</button>
+			<button class="btn num-btn" id="fourBtn">4</button>
+			<button class="btn num-btn" id="fiveBtn">5</button>
+			<button class="btn num-btn" id="sixBtn">6</button>
 			<button class="btn btn-op btn-single-print" id="multiplyBtn">×</button>
 
 			<!-- row 4 -->
-			<button class="btn btn-main" id="oneBtn">1</button>
-			<button class="btn btn-main" id="twoBtn">2</button>
-			<button class="btn btn-main" id="threeBtn">3</button>
+			<button class="btn num-btn" id="oneBtn">1</button>
+			<button class="btn num-btn" id="twoBtn">2</button>
+			<button class="btn num-btn" id="threeBtn">3</button>
 			<button class="btn btn-op btn-single-print" id="minusBtn">−</button>
 
 			<!-- row 5 -->
 			<button class="btn btn-single-print" id="decimalBtn">.</button>
-			<button class="btn btn-main" id="zeroBtn">0</button>
-			<button class="btn btn-op" id="equalsBtn">=</button>
+			<button class="btn num-btn" id="zeroBtn">0</button>
+			<button class="btn" id="equalsBtn">=</button>
 			<button class="btn btn-op btn-single-print" id="plusBtn">+</button>
 		</div>
 		<script src="script.js"></script>

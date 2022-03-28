@@ -68,18 +68,18 @@ h1 {
   font-size: 1.25em;
 }
 
-.btn-main, #decimalBtn {
+.num-btn, #decimalBtn {
   background-color: #0d4e57;
 }
 
-.btn-main:hover, #decimalBtn:hover {
+.num-btn:hover, #decimalBtn:hover {
   background-color: #0d4e57d6;
   transition: background-color 15ms linear;
 }
 
-.btn-main:active, #decimalBtn:active {
+.num-btn:active, #decimalBtn:active {
   background-color: #0d4e5793;
-  transition: background-color 15ms linear;
+  transition: background-color 7.5ms linear;
 }
 
 .btn-op {
@@ -93,7 +93,7 @@ h1 {
 
 .btn-op:active {
   background-color: #19484f8c;
-  transition: background-color 15ms linear;
+  transition: background-color 7.5ms linear;
 }
 
 #display {

@@ -92,17 +92,29 @@ h1 {
 	transition: background-color 7.5ms linear;
 }
 
-.btn-op,
 #clearBtn {
 	background-color: #19484f;
 }
-.btn-op:hover,
+
 #clearBtn:hover {
 	background-color: #19484fd6;
 	transition: background-color 15ms linear;
 }
-.btn-op:active,
+
 #clearBtn:active {
+	background-color: #19484f8c;
+	transition: background-color 7.5ms linear;
+}
+
+.btn-op {
+	background-color: #19484f;
+}
+
+.btn-op:hover {
+	background-color: #19484fd6;
+	transition: background-color 15ms linear;
+}
+.btn-op:active {
 	background-color: #19484f8c;
 	transition: background-color 7.5ms linear;
 }

@@ -10,6 +10,9 @@ const resultCurrentCalc = document.querySelector(
 );
 const calcText = document.getElementById("calcText");
 const header = document.getElementById("header");
+const decimalBtn = document.getElementById("decimalBtn");
+
+// console.log(0.6 * 10)
 
 // header.innerText = "9 / 8"
 
@@ -104,6 +107,24 @@ numBtn.forEach((btn) => {
 		// }
 		addText(btn.innerText, resultText);
 	});
+});
+
+// Decimal Button
+decimalBtn.addEventListener("click", () => {
+	// If there's nothing in resultText, we want '0.'
+	if (resultText.innerText === "" && !resultText.innerText.match(/.*\./)) {
+	addText("0.", resultText);
+	addText("Ans = 0", calcText);
+	}
+
+	// If the last char in resultText is not 
+	if (!resultText.innerText.match(/.*\d/)) {
+		addText("0.", resultText);
+	}
+	if (resultText.innerText.match(/.*\d/) && !resultText.innerText.match(/.*\./)) {
+		console.log("decimal test");
+		addText(".", resultText);
+	}
 });
 
 // Clear Button

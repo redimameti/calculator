@@ -12,13 +12,7 @@ const calcText = document.getElementById("calcText");
 const header = document.getElementById("header");
 const decimalBtn = document.getElementById("decimalBtn");
 
-// console.log(0.6 * 10)
-
-// header.innerText = "9 / 8"
-
-// if (header.innerText.match(/\d* [+-/*] \d*/)) {
-// 	console.log("test works")
-// }
+// console.log(resultText.offsetWidth)
 
 // Add Text Element Function
 const addText = (text, parentNode) => {
@@ -37,8 +31,28 @@ const replaceText = (text, element) => {
 	return (element.innerText = textNode);
 };
 
+// console.log(window.getComputedStyle(header).getPropertyValue('font-size'));
+
+// Decrease text size
+const decrFontSize = (target, decrAmount) => {
+	const currentSize = window
+		.getComputedStyle(header)
+		.getPropertyValue("font-size");
+	const newSize = currentSize.slice(0, 2) - decrAmount;
+	return (target.style.fontSize = `${newSize}px`);
+};
+
+console.log(decrFontSize(header, 2));
+
 // A function which will split a string equation into an array of numbers and return the result
 const magic = (equationStr) => {
+	// You have a string
+	// split string at begingin
+	const numsArr = equationStr.split(/([-+*/]+)/);
+	const num1 = Number(numsArr[0]);
+	const num2 = Number(numsArr[2]);
+	const operator = numsArr[1];
+
 	// Operator functions (+, -, /, *)
 	const addNums = (a, b) => {
 		return a + b;
@@ -53,41 +67,17 @@ const magic = (equationStr) => {
 		return a / b;
 	};
 
-	if (equationStr.includes("+")) {
-		const numsArr = equationStr.split("+");
-		const num1 = parseInt(numsArr[0]);
-		const num2 = parseInt(numsArr[1]);
-		return addNums(num1, num2);
-	}
-
-	if (equationStr.includes("-")) {
-		const numsArr = equationStr.split("-");
-		const num1 = parseInt(numsArr[0]);
-		const num2 = parseInt(numsArr[1]);
-		return minusNums(num1, num2);
-	}
-
-	if (equationStr.includes("*")) {
-		const numsArr = equationStr.split("*");
-		const num1 = parseInt(numsArr[0]);
-		const num2 = parseInt(numsArr[1]);
-		return multiplyNums(num1, num2);
-	}
-
-	if (equationStr.includes("/")) {
-		const numsArr = equationStr.split("/");
-		const num1 = parseInt(numsArr[0]);
-		const num2 = parseInt(numsArr[1]);
-		return divideNums(num1, num2);
-	}
-
-	if (
-		!equationStr.includes("+") ||
-		!equationStr.includes("-") ||
-		!equationStr.includes("/") ||
-		!equationStr.includes("*")
-	) {
-		return equationStr;
+	switch (operator) {
+		case "+": // (operator === "+")
+			return addNums(num1, num2);
+		case "-":
+			return minusNums(num1, num2);
+		case "*":
+			return multiplyNums(num1, num2);
+		case "/":
+			return divideNums(num1, num2);
+		default:
+			return equationStr;
 	}
 };
 
@@ -100,11 +90,21 @@ numBtn.forEach((btn) => {
 		if (resultText.innerText == "") {
 			addText("Ans = 0", calcText);
 		}
-		// if (calcText.innerText.match(/\d* [+-/*] \d*/)) {
-		// 	//If there is an equation in the calcText field, and a result in the resultText field, I want resultText to = "" (this will reset the calculation so that numbers pressed don't get appended to the end of the previous result)
-		// 	console.log("test works")
-		// 	resultText.innerText = "";
-		// }
+
+		// if calcText equation equals current result, move current display to calcText and reset display (reset after pressing equals)
+		if (magic(calcText.innerText.slice(0, -1)) == resultText.innerText) {
+			calcText.innerText = `Ans = ${resultText.innerText}`;
+			resultText.innerText = "";
+		}
+
+		// Decrease text size when max-width of 205 is reached
+		if (resultText.offsetWidth >= "205") {
+			// resultText.style.fontSize -= "0.5"
+			// console.log("width-check")
+			resultText.offsetWidth = 210;
+			decrFontSize(resultText, 10);
+		}
+
 		addText(btn.innerText, resultText);
 	});
 });
@@ -113,17 +113,33 @@ numBtn.forEach((btn) => {
 decimalBtn.addEventListener("click", () => {
 	// If there's nothing in resultText, we want '0.'
 	if (resultText.innerText === "" && !resultText.innerText.match(/.*\./)) {
-	addText("0.", resultText);
-	addText("Ans = 0", calcText);
+		addText("0.", resultText);
+		addText("Ans = 0", calcText);
 	}
 
-	// If the last char in resultText is not 
+	// If the last char in resultText is not a number, add a 0 before the decimal
 	if (!resultText.innerText.match(/.*\d/)) {
 		addText("0.", resultText);
 	}
-	if (resultText.innerText.match(/.*\d/) && !resultText.innerText.match(/.*\./)) {
-		console.log("decimal test");
+
+	// Print decimal point if first number in the display does not already contain one
+	if (
+		resultText.innerText.match(/.*\d/) &&
+		!resultText.innerText.match(/.*\./)
+	) {
 		addText(".", resultText);
+	}
+
+	// If there is an operator in display
+	if (resultText.innerText.match(/([-+*/]+)/)) {
+		// If there is no number AFTER the operator, print 0.
+		if (!resultText.innerText.split(/([-+*/]+)/)[2].match(/\d/)) {
+			addText("0.", resultText);
+		}
+		// And if the second number in the equation does not already contain a decimal point, we can print it into the display
+		if (!resultText.innerText.split(/([-+*/]+)/)[2].match(/\./)) {
+			addText(".", resultText);
+		}
 	}
 });
 

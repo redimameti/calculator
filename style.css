@@ -45,7 +45,7 @@ h1 {
   grid-area: a;
 }
 .display-container__result span {
-  font-size: 3em;
+  font-size: 3rem;
   display: flex;
   font-weight: 200;
   text-align: right;
@@ -60,6 +60,7 @@ h1 {
 .display-container__calculation span {
   font-size: 0.8em;
   text-align: right;
+  position: absolute;
 }
 
 .btn {

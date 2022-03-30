@@ -8,14 +8,16 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
 			rel="stylesheet"
 		/>
+
 		<title>Minimal Calculator</title>
-		<link rel="shortcut icon" type="image" href="favicon.ico">
+		<link href="favicon.png" rel="shortcut icon" type="image" />
 	</head>
 	<body>
-		<h1 id="header">Minimal Calculator</h2>
+		<h1 id="header">Minimal Calculator</h1>
+		<span id="descriptor">A vanilla JS calculator</span>
 		<div id="calculator">
 			<!-- row 1 -->
 			<div class="display-container" id="display">
@@ -32,13 +34,17 @@
 			<button class="btn num-btn" id="sevenBtn">7</button>
 			<button class="btn num-btn" id="eightBtn">8</button>
 			<button class="btn num-btn" id="nineBtn">9</button>
-			<button class="btn btn-op btn-single-print" id="divideBtn">/</button>
+			<button class="btn btn-op btn-single-print" id="divideBtn">
+				/
+			</button>
 
 			<!-- row 3 -->
 			<button class="btn num-btn" id="fourBtn">4</button>
 			<button class="btn num-btn" id="fiveBtn">5</button>
 			<button class="btn num-btn" id="sixBtn">6</button>
-			<button class="btn btn-op btn-single-print" id="multiplyBtn">*</button>
+			<button class="btn btn-op btn-single-print" id="multiplyBtn">
+				*
+			</button>
 
 			<!-- row 4 -->
 			<button class="btn num-btn" id="oneBtn">1</button>
@@ -52,6 +58,17 @@
 			<button class="btn" id="equalsBtn">=</button>
 			<button class="btn btn-op btn-single-print" id="plusBtn">+</button>
 		</div>
+		<footer>
+			<span
+				>Built by
+				<a
+					id="link"
+					target="_blank"
+					href="https://redimameti.github.io/Portfolio/"
+					>Redim Ameti</a
+				></span
+			>
+		</footer>
 		<script src="script.js"></script>
 	</body>
 </html>

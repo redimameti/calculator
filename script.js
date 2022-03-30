@@ -12,23 +12,13 @@ const calcText = document.getElementById("calcText");
 const header = document.getElementById("header");
 const decimalBtn = document.getElementById("decimalBtn");
 
-// console.log(resultText.offsetWidth)
-
 // Add Text Element Function
 const addText = (text, parentNode) => {
 	// create a text node
 	const textNode = document.createTextNode(text);
 
+	// add text node to parent
 	parentNode.appendChild(textNode);
-};
-
-// Replace Text Element Function
-const replaceText = (text, element) => {
-	// create a text node
-	const textNode = document.createTextNode(text);
-
-	// replace the text inside the parentNode with the text node we are passing
-	return (element.innerText = textNode);
 };
 
 // console.log(window.getComputedStyle(header).getPropertyValue('font-size'));
@@ -36,7 +26,7 @@ const replaceText = (text, element) => {
 // Decrease text size
 const decrFontSize = (target, decrAmount) => {
 	const currentSize = window
-		.getComputedStyle(header)
+		.getComputedStyle(target)
 		.getPropertyValue("font-size");
 	const newSize = currentSize.slice(0, 2) - decrAmount;
 	return (target.style.fontSize = `${newSize}px`);
@@ -98,11 +88,16 @@ numBtn.forEach((btn) => {
 		}
 
 		// Decrease text size when max-width of 205 is reached
-		if (resultText.offsetWidth >= "205") {
-			// resultText.style.fontSize -= "0.5"
-			// console.log("width-check")
-			resultText.offsetWidth = 210;
-			decrFontSize(resultText, 10);
+		if (
+			resultText.offsetWidth >= 195 &&
+			resultText.innerText.match(/([-+*/]+)/)
+		) {
+			resultText.offsetWidth = 200;
+			decrFontSize(resultText, 6);
+		}
+		if (resultText.offsetWidth >= 205) {
+			resultText.offsetWidth = 200;
+			decrFontSize(resultText, 4);
 		}
 
 		addText(btn.innerText, resultText);
@@ -113,6 +108,7 @@ numBtn.forEach((btn) => {
 decimalBtn.addEventListener("click", () => {
 	// If there's nothing in resultText, we want '0.'
 	if (resultText.innerText === "" && !resultText.innerText.match(/.*\./)) {
+		resultText.style.fontSize = `48px`;
 		addText("0.", resultText);
 		addText("Ans = 0", calcText);
 	}
@@ -130,6 +126,11 @@ decimalBtn.addEventListener("click", () => {
 		addText(".", resultText);
 	}
 
+	if (magic(calcText.innerText.slice(0, -1)) == resultText.innerText) {
+		calcText.innerText = `Ans = ${resultText.innerText}`;
+		resultText.innerText = "";
+	}
+
 	// If there is an operator in display
 	if (resultText.innerText.match(/([-+*/]+)/)) {
 		// If there is no number AFTER the operator, print 0.
@@ -143,31 +144,18 @@ decimalBtn.addEventListener("click", () => {
 	}
 });
 
-// Clear Button
-clearBtn.addEventListener("click", () => {
-	if (resultDisplay.innerHTML.includes("")) {
-		resultText.innerText = "";
-		calcText.innerText = "";
-	}
-});
-
-// Equals Button
-equalsBtn.addEventListener("click", () => {
-	if (calcText.innerText === "") {
-		resultText.innerText = "0";
-		calcText.innerText = "";
-	} else {
-		calcText.innerText = `${resultText.innerText} =`; // I want this to display the equation I had typed into the calculator BEFORE pressing equals
-		resultText.innerText = `${magic(resultText.innerText)}`; //this is what we want to display in the result display
-	}
-});
-
 // Operator buttons
 operatorBtn.forEach((btn) => {
 	btn.addEventListener("click", () => {
 		// if (resultText.innerText === "0") {
 		// 	resultText.innerText = "";
 		// }
+
+		// Decrease text size when max-width of 205 is reached
+		if (resultText.offsetWidth >= 195) {
+			resultText.offsetWidth = 200;
+			decrFontSize(resultText, 6);
+		}
 
 		if (
 			//if we have already entered an operator in the equation
@@ -189,4 +177,51 @@ operatorBtn.forEach((btn) => {
 			addText(" " + btn.innerText + " ", resultText);
 		}
 	});
+});
+
+// Clear Button
+clearBtn.addEventListener("click", () => {
+	if (resultDisplay.innerHTML.includes("")) {
+		resultText.innerText = "";
+		calcText.innerText = "";
+	}
+});
+
+// Equals Button
+equalsBtn.addEventListener("click", () => {
+	let currentResult = magic(resultText.innerText);
+	// console.log(currentResult.toString().length);
+	if (
+		window
+			.getComputedStyle(resultText)
+			.getPropertyValue("font-size")
+			.slice(0, 2) < 48
+	) {
+		resultText.style.fontSize = "48px";
+	}
+	if (calcText.innerText === "") {
+		resultText.innerText = "0";
+		calcText.innerText = "";
+	}
+	// console.log(magic(resultText.innerText));
+	if (`${currentResult}`.length >= 9) {
+		console.log("Check");
+		resultText.style.fontSize = `32px`;
+	}
+
+	if (`${currentResult}`.length >= 12) {
+		console.log("Check");
+		resultText.style.fontSize = `24px`;
+	}
+	if (`${currentResult}`.length >= 15) {
+		console.log("Check");
+		resultText.style.fontSize = `23px`;
+	}
+	if (`${currentResult}`.length >= 20) {
+		console.log("Check");
+		resultText.style.fontSize = `16px`;
+	} else {
+		calcText.innerText = `${resultText.innerText} =`; // I want this to display the equation I had typed into the calculator BEFORE pressing equals
+		resultText.innerText = `${currentResult}`; //this is what we want to display in the result display
+	}
 });

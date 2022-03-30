@@ -1,12 +1,44 @@
-$background: #e9e9e9;
-$main: #0d4e57;
-$secondary: #19484f;
-$display: #0a383e;
+$background: #f0f1f2;
+$main: #2b3478;
+$main-hov: #2b3478d9;
+$main-act: #2b347882;
+$secondary: #222963;
+$secondary-hov: #222863d6;
+$secondary-act: #22286380;
+$display: #151b45;
+$grid-gap: #545a8e;
+$highlight: #d4ff00;
+$dark: #151515;
 
 * {
 	color: #e0e0e0;
 	font-family: "Roboto", sans-serif;
 	font-weight: 300;
+}
+
+::selection {
+	background-color: $highlight;
+}
+
+footer {
+	padding: 25px;
+	width: 50%;
+	display: flex;
+	justify-content: center;
+}
+
+button:hover {
+	cursor: pointer;
+}
+footer > span {
+	color: $dark;
+	font-size: 1em;
+	font-family: 'Manrope', sans-serif;
+
+}
+#link {
+	color: $dark;
+	font-weight: 400;
 }
 
 body {
@@ -16,12 +48,24 @@ body {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	width: 100vw;
+	max-height: 100vh;
+	max-width: 100vw;
+	margin: 0;
 }
 
 h1 {
-	color: #000000;
-	text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.358);
+	color: $dark;
+	// text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.358);
+	font-weight: 500;
+	margin: 5px 0px;
+	font-family: 'Manrope', sans-serif;
+}
+
+#descriptor {
+	color: $dark;
+	font-size: 1em;
+	font-family: 'Manrope', sans-serif;
+	margin: 5px 0px 25px 0px;
 }
 
 #calculator {
@@ -36,12 +80,12 @@ h1 {
 		"k l m n"
 		"o p q r";
 	gap: 1px;
-	background-color: #3f6065;
-	box-shadow: 0px 0px 17px 3px rgba(0, 0, 0, 0.38);
+	background-color: $grid-gap;
+	// box-shadow: 0px 0px 17px 3px rgba(0, 0, 0, 0.38);
 }
 
 .display-container {
-	background-color: #0a383e;
+	background-color: $display;
 	display: grid;
 	grid-template-rows: repeat(3, 1fr);
 	grid-template-areas: "b" "a" "a";
@@ -55,7 +99,7 @@ h1 {
 		grid-area: a;
 
 		span {
-			font-size: 3rem;
+			font-size: 3em;
 			display: flex;
 			font-weight: 200;
 			text-align: right;
@@ -84,43 +128,43 @@ h1 {
 
 .num-btn,
 #decimalBtn {
-	background-color: #0d4e57;
+	background-color: $main;
 }
 .num-btn:hover,
 #decimalBtn:hover {
-	background-color: #0d4e57d6;
+	background-color: $main-hov;
 	transition: background-color 15ms linear;
 }
 .num-btn:active,
 #decimalBtn:active {
-	background-color: #0d4e5793;
+	background-color: $main-act;
 	transition: background-color 7.5ms linear;
 }
 
 #clearBtn {
-	background-color: #19484f;
+	background-color: $secondary;
 }
 
 #clearBtn:hover {
-	background-color: #19484fd6;
+	background-color: $secondary-hov;
 	transition: background-color 15ms linear;
 }
 
 #clearBtn:active {
-	background-color: #19484f8c;
+	background-color: $secondary-act;
 	transition: background-color 7.5ms linear;
 }
 
 .btn-op {
-	background-color: #19484f;
+	background-color: $secondary;
 }
 
 .btn-op:hover {
-	background-color: #19484fd6;
+	background-color: $secondary-hov;
 	transition: background-color 15ms linear;
 }
 .btn-op:active {
-	background-color: #19484f8c;
+	background-color: $secondary-act;
 	transition: background-color 7.5ms linear;
 }
 
@@ -197,14 +241,14 @@ h1 {
 
 #equalsBtn {
 	grid-area: q;
-	background-color: #0d4e57;
+	background-color: $main;
 }
 #equalsBtn:hover {
-	background-color: #0d4e57d6;
+	background-color: $main-hov;
 	transition: background-color 15ms linear;
 }
 #equalsBtn:active {
-	background-color: #0d4e5793;
+	background-color: $main-act;
 	transition: background-color 15ms linear;
 }
 
